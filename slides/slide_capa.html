@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inovação no Crédito Consignado</title>
+    
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <style>
+      :root {
+        --deep-blue: #0a192f;
+        --navy-blue: #172a45;
+        --light-navy: #303f60;
+        --lightest-navy: #465881;
+        --slate: #8892b0;
+        --light-slate: #a8b2d1;
+        --lightest-slate: #ccd6f6;
+        --white: #e6f1ff;
+        --accent: #64ffda;
+        --accent-hover: #4fd1c5;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background: linear-gradient(135deg, 
+                    rgba(10, 25, 47, 0.95) 0%, 
+                    rgba(23, 42, 69, 0.95) 100%),
+                url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+        color: var(--white);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        position: relative;
+        overflow-x: hidden;
+      }
+      
+      body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at 75% 50%, 
+                  rgba(100, 255, 218, 0.1) 0%, 
+                  rgba(10, 25, 47, 0.9) 70%);
+        z-index: 0;
+      }
+      
+      .card {
+        background: rgba(23, 42, 69, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        padding: 3rem;
+        max-width: 800px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+        border: 1px solid rgba(100, 255, 218, 0.1);
+        animation: fadeInUp 0.8s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+      }
+      
+      .header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      
+      .title {
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+      }
+      
+      .title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 2px;
+      }
+      
+      .subtitle {
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        color: var(--light-slate);
+        font-weight: 400;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+      
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      
+      .team-member {
+        background: rgba(23, 42, 69, 0.6);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(100, 255, 218, 0.05);
+      }
+      
+      .team-member:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        border-color: rgba(100, 255, 218, 0.2);
+      }
+      
+      .member-name {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 1rem;
+      }
+      
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+      
+      .social-link {
+        color: var(--light-slate);
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        padding: 0.5rem 0;
+      }
+      
+      .social-link:hover {
+        color: var(--accent);
+        transform: translateY(-2px);
+      }
+      
+      .social-link i {
+        font-size: 1.3rem;
+      }
+      
+      /* Efeito de partículas */
+      .particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        overflow: hidden;
+      }
+      
+      .particle {
+        position: absolute;
+        background: rgba(100, 255, 218, 0.5);
+        border-radius: 50%;
+        animation: float linear infinite;
+      }
+      
+      @keyframes float {
+        to {
+          transform: translateY(-100vh);
+        }
+      }
+      
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .card {
+          padding: 2rem 1.5rem;
+        }
+        
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Efeito de partículas -->
+    <div class="particles" id="particles"></div>
+    
+    <div class="card">
+      <div class="header">
+        <h1 class="title">Análise para Crédito</h1>
+        <p class="subtitle">Inteligência Artificial: Sua Vantagem Contra a Inadimplência</p>
+      </div>
+      
+      <div class="team-grid">
+        <div class="team-member">
+          <h3 class="member-name">Pedro Schuves Marodin</h3>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/pedro-schuves-marodin/" class="social-link" target="_blank">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/pmarodinn" class="social-link" target="_blank">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+        
+        <div class="team-member">
+          <h3 class="member-name">Enzo Holtzmann Gaio</h3>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/enzo-h-gaio-7194642b6/" class="social-link" target="_blank">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/ehg2004" class="social-link" target="_blank">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      // Criação de partículas (opcional)
+      document.addEventListener('DOMContentLoaded', function() {
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = window.innerWidth < 768 ? 20 : 50;
+        
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('div');
+          particle.classList.add('particle');
+          
+          // Tamanho aleatório entre 1px e 3px
+          const size = Math.random() * 2 + 1;
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+          
+          // Posição aleatória
+          particle.style.left = `${Math.random() * 100}%`;
+          particle.style.top = `${Math.random() * 100}%`;
+          
+          // Duração da animação aleatória
+          const duration = Math.random() * 20 + 10;
+          particle.style.animationDuration = `${duration}s`;
+          
+          // Atraso aleatório
+          particle.style.animationDelay = `${Math.random() * 10}s`;
+          
+          particlesContainer.appendChild(particle);
+        }
+      });
+    </script>
+  </body>
+  <script src="../js/navigation.js"></script>
+</html>

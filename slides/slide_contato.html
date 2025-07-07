@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contato e Agradecimento</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Ícones -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --deep-blue: #0a192f;
+        --navy-blue: #172a45;
+        --light-navy: #303f60;
+        --lightest-navy: #465881;
+        --slate: #8892b0;
+        --light-slate: #a8b2d1;
+        --lightest-slate: #ccd6f6;
+        --white: #e6f1ff;
+        --accent: #64ffda;
+        --accent-hover: #4fd1c5;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background: linear-gradient(135deg, var(--deep-blue), var(--navy-blue));
+        color: var(--white);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      .slide-container {
+        background: rgba(23, 42, 69, 0.85);
+        backdrop-filter: blur(8px);
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        padding: 3rem;
+        max-width: 1000px;
+        width: 100%;
+        animation: fadeIn 0.8s ease-out;
+        border: 1px solid rgba(100, 255, 218, 0.1);
+      }
+
+      .text-center {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .contact-main-title {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+        position: relative;
+        color: var(--white);
+      }
+
+      .contact-main-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 2px;
+      }
+
+      .thank-you-message {
+        font-size: 1.2rem;
+        color: var(--light-slate);
+        margin-bottom: 0.5rem;
+      }
+
+      .questions-message {
+        font-size: 1rem;
+        color: var(--lightest-slate);
+      }
+
+      .contact-cards-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .contact-cards-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+      }
+
+      .contact-card {
+        background: rgba(48, 63, 96, 0.7);
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 1px solid rgba(100, 255, 218, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        border-color: rgba(100, 255, 218, 0.2);
+      }
+
+      .name {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .social-links-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        color: var(--lightest-slate);
+        text-decoration: none;
+        border: 1px solid rgba(100, 255, 218, 0.05);
+        padding: 0.6rem 1rem;
+        border-radius: 8px;
+        transition: background 0.3s ease, transform 0.3s ease;
+      }
+
+      .social-link:hover {
+        background: rgba(100, 255, 218, 0.1);
+        transform: translateX(5px);
+        color: var(--accent);
+      }
+
+      .social-icon i {
+        color: var(--accent);
+        font-size: 1.2rem;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="text-center">
+        <h1 class="contact-main-title">Contato</h1>
+        <p class="thank-you-message">Obrigado pela Atenção!</p>
+        <p class="questions-message">Perguntas? Estamos à disposição.</p>
+      </div>
+
+      <div class="contact-cards-grid">
+        <div class="contact-card">
+          <h2 class="name">Pedro Schuves Marodin</h2>
+          <div class="social-links-container">
+            <a
+              href="https://www.linkedin.com/in/pedro-schuves-marodin/"
+              class="social-link"
+              target="_blank"
+            >
+              <div class="social-icon"><i class="fab fa-linkedin-in"></i></div>
+              <span>linkedin.com/in/pedro-schuves-marodin</span>
+            </a>
+
+            <a
+              href="https://github.com/pmarodinn"
+              class="social-link"
+              target="_blank"
+            >
+              <div class="social-icon"><i class="fab fa-github"></i></div>
+              <span>github.com/pmarodinn</span>
+            </a>
+
+            <a href="mailto:pedro.schuvesmarodin@helsinki.fi" class="social-link">
+              <div class="social-icon"><i class="fas fa-envelope"></i></div>
+              <span>pedro.schuvesmarodin@helsinki.fi</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h2 class="name">Enzo Holtzmann Gaio</h2>
+          <div class="social-links-container">
+            <a
+              href="https://www.linkedin.com/in/enzo-h-gaio-7194642b6/"
+              class="social-link"
+              target="_blank"
+            >
+              <div class="social-icon"><i class="fab fa-linkedin-in"></i></div>
+              <span>linkedin.com/in/enzo-h-gaio-7194642b6</span>
+            </a>
+
+            <a
+              href="https://github.com/ehg2004"
+              class="social-link"
+              target="_blank"
+            >
+              <div class="social-icon"><i class="fab fa-github"></i></div>
+              <span>github.com/ehg2004</span>
+            </a>
+
+            <a
+              href="mailto:enzoholtzmanngaio@alunos.utfpr.edu.br"
+              class="social-link"
+            >
+              <div class="social-icon"><i class="fas fa-envelope"></i></div>
+              <span>enzoholtzmanngaio@alunos.utfpr.edu.br</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/navigation.js"></script>
+  </body>
+</html>

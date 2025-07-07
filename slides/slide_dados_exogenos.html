@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Importância dos Dados Exógenos</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Ícones -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+
+    <style>
+      :root {
+        --deep-blue: #0a192f;
+        --navy-blue: #172a45;
+        --light-navy: #223859;
+        --slate: #8892b0;
+        --light-slate: #a8b2d1;
+        --lightest-slate: #ccd6f6;
+        --white: #e6f1ff;
+        --accent: #64ffda;
+        --yellow: #f1c40f;
+        --blue: #2a9df4;
+        --green: #27ae60;
+        --dark-blue: #1a365d;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background: linear-gradient(135deg, var(--deep-blue), var(--navy-blue));
+        color: var(--lightest-slate);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      .slide-container {
+        background: rgba(23, 42, 69, 0.95);
+        border: 1px solid rgba(100, 255, 218, 0.15);
+        border-radius: 16px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        padding: 2.5rem;
+        max-width: 1200px;
+        width: 100%;
+        animation: fadeIn 0.6s ease-out;
+      }
+
+      .slide-title-common {
+        font-size: clamp(1.8rem, 4vw, 2.4rem);
+        font-weight: 700;
+        margin-bottom: 1.8rem;
+        text-align: center;
+        color: var(--white);
+        position: relative;
+      }
+
+      .slide-title-common::after {
+        content: '';
+        display: block;
+        width: 80px;
+        height: 4px;
+        background: var(--accent);
+        margin: 0.5rem auto 0 auto;
+        border-radius: 2px;
+      }
+
+      .slide-content-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      @media (min-width: 1024px) {
+        .slide-content-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 2.5rem;
+        }
+      }
+
+      .highlight-box-exogenous {
+        background: rgba(100, 255, 218, 0.08);
+        border-left: 4px solid var(--accent);
+        padding: 1.2rem 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        color: var(--lightest-slate);
+      }
+
+      .text-block {
+        background: rgba(34, 56, 89, 0.7);
+        border-radius: 8px;
+        padding: 1rem 1.5rem;
+        color: var(--light-slate);
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .data-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        background: rgba(34, 56, 89, 0.6);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        color: var(--lightest-slate);
+      }
+
+      .data-item:hover {
+        transform: translateY(-2px);
+        background: rgba(100, 255, 218, 0.08);
+      }
+
+      .data-icon-exogenous {
+        color: var(--accent);
+        font-size: 1.8rem;
+        margin-top: 0.2rem;
+      }
+
+      .chart-container-exogenous {
+        width: 100%;
+        height: 300px;
+        background: rgba(34, 56, 89, 0.6);
+        border-radius: 12px;
+        padding: 1rem;
+      }
+
+      .footer {
+        margin-top: 2rem;
+        text-align: center;
+        color: var(--slate);
+        font-size: 0.9rem;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <h1 class="slide-title-common">A Importância dos Dados Exógenos</h1>
+
+      <div class="slide-content-grid">
+        <div>
+          <div class="highlight-box-exogenous">
+            <p class="font-bold text-xl mb-2">O que são Dados Exógenos?</p>
+            <p class="text-base">
+              Dados externos ao sistema tradicional de crédito que fornecem
+              contexto adicional e aprofundado sobre o comportamento financeiro
+              e perfil do cliente.
+            </p>
+          </div>
+
+          <div class="text-block">
+            Um banco de dados robusto e diversificado é fundamental para alimentar
+            modelos de ML eficazes:
+          </div>
+
+          <div class="data-item">
+            <i class="fas fa-database data-icon-exogenous"></i>
+            <div>
+              <strong>Dados Internos Tradicionais</strong>
+              <p class="text-sm">
+                Histórico de pagamentos, valor do empréstimo, prazo, renda
+                declarada.
+              </p>
+            </div>
+          </div>
+
+          <div class="data-item">
+            <i class="fas fa-globe data-icon-exogenous"></i>
+            <div>
+              <strong>Dados Socioeconômicos</strong>
+              <p class="text-sm">
+                Indicadores econômicos (inflação), taxa de desemprego regional,
+                sazonalidade do setor de atuação.
+              </p>
+            </div>
+          </div>
+
+          <div class="data-item">
+            <i class="fas fa-shopping-cart data-icon-exogenous"></i>
+            <div>
+              <strong>Dados Comportamentais</strong>
+              <p class="text-sm">
+                Padrões de consumo, histórico de navegação em plataformas
+                financeiras, interações com serviços.
+              </p>
+            </div>
+          </div>
+
+          <div class="data-item">
+            <i class="fas fa-mobile-alt data-icon-exogenous"></i>
+            <div>
+              <strong>Dados Alternativos</strong>
+              <p class="text-sm">
+                Pagamentos de serviços públicos (água, luz), histórico de
+                aluguel, comportamento em redes sociais (se relevante e ético).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-center items-center">
+          <div class="chart-container-exogenous">
+            <canvas id="accuracyImprovementChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div>Pedro Schuves Marodin & Enzo Holtzmann Gaio</div>
+        <div>Slide: Dados Exógenos</div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const ctx = document.getElementById('accuracyImprovementChart');
+        if (ctx) {
+          const chart = new Chart(ctx.getContext('2d'), {
+            type: 'bar',
+            data: {
+              labels: [
+                'Apenas Dados Internos',
+                '+ Socioeconômicos',
+                '+ Comportamentais',
+                '+ Alternativos'
+              ],
+              datasets: [
+                {
+                  label: 'Acurácia do Modelo (%)',
+                  data: [78, 85, 91, 96],
+                  backgroundColor: [
+                    '#f1c40f',
+                    '#2a9df4',
+                    '#27ae60',
+                    '#fa365d'
+                  ],
+                  borderColor: [
+                    '#d4ac0d',
+                    '#2589d8',
+                    '#219653',
+                    '#152d4e'
+                  ],
+                  borderWidth: 1
+                }
+              ]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Impacto dos Dados Exógenos na Acurácia do Modelo',
+                  font: {
+                    size: 18,
+                    weight: 'bold'
+                  },
+                  color: '#e6f1ff' // Cor clara no título
+                },
+                legend: {
+                  labels: {
+                    color: '#e6f1ff' // Cor clara nas legendas
+                  }
+                }
+              },
+              scales: {
+                x: {
+                  ticks: {
+                    color: '#e6f1ff' // Cor clara no eixo X
+                  },
+                  grid: {
+                    color: 'rgba(255,255,255,0.05)'
+                  }
+                },
+                y: {
+                  beginAtZero: true,
+                  max: 100,
+                  title: {
+                    display: true,
+                    text: 'Acurácia (%)',
+                    color: '#e6f1ff' // Cor clara no eixo Y
+                  },
+                  ticks: {
+                    callback: function (value) {
+                      return value + '%';
+                    },
+                    color: '#e6f1ff' // Cor clara nos valores Y
+                  },
+                  grid: {
+                    color: 'rgba(255,255,255,0.05)'
+                  }
+                }
+              }
+            }
+          });
+        }
+      });
+
+
+    </script>
+    <script src="../js/navigation.js"></script>
+  </body>
+</html>

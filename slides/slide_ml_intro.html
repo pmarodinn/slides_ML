@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>O Poder do Machine Learning na Análise de Crédito</title>
+
+  <!-- Fontes Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- FontAwesome -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --deep-blue: #0a192f;
+      --navy-blue: #172a45;
+      --light-navy: #223859;
+      --slate: #8892b0;
+      --light-slate: #a8b2d1;
+      --lightest-slate: #ccd6f6;
+      --white: #e6f1ff;
+      --accent: #64ffda;
+      --yellow: #f1c40f;
+      --blue: #2a9df4;
+      --green: #27ae60;
+      --dark-blue: #1a365d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--deep-blue);
+      color: var(--lightest-slate);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .slide-container {
+      max-width: 720px;
+      width: 100%;
+      background: var(--navy-blue);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+      padding: 2.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 2.25rem;
+      color: var(--yellow);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .highlight-box {
+      background: var(--light-navy);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.25rem;
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .highlight-box p {
+      font-weight: 400;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      color: var(--lightest-slate);
+    }
+
+    .lead-paragraph {
+      font-size: 1.125rem;
+      color: var(--light-slate);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .ml-steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .step-box {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      background: var(--yellow);
+      color: var(--dark-blue);
+      font-weight: 700;
+      font-size: 1.25rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      user-select: none;
+      box-shadow: 0 0 6px var(--yellow);
+      margin-top: 4px;
+    }
+
+    .step-box strong {
+      font-weight: 700;
+      color: var(--blue);
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .step-box p {
+      color: var(--lightest-slate);
+      font-size: 1rem;
+      line-height: 1.4;
+      max-width: 600px;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      text-align: center;
+      color: var(--slate);
+      font-size: 0.9rem;
+      font-weight: 500;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-container">
+    <h1>O Poder do Machine Learning na Análise de Crédito</h1>
+
+    <div class="highlight-box">
+      <p>O que é Machine Learning?</p>
+      <p>
+        Ramo da Inteligência Artificial que permite aos sistemas
+        <strong>aprender e melhorar automaticamente com a experiência</strong>, sem serem explicitamente programados.
+      </p>
+    </div>
+
+    <p class="lead-paragraph">
+      Na análise de crédito, o Machine Learning revoluciona a forma como avaliamos o risco:
+    </p>
+
+    <div class="ml-steps-list">
+      <div class="step-box">
+        <div class="step-number">1</div>
+        <div>
+          <strong>Aprendizado com dados históricos</strong>
+          <p>O sistema aprende padrões de comportamento a partir de dados de clientes anteriores, como históricos de pagamento e informações financeiras.</p>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <div class="step-number">2</div>
+        <div>
+          <strong>Identificação de padrões complexos</strong>
+          <p>Reconhece relações não óbvias e sutis entre múltiplas variáveis que humanos dificilmente perceberiam ou processariam.</p>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <div class="step-number">3</div>
+        <div>
+          <strong>Previsões precisas</strong>
+          <p>Calcula a probabilidade de inadimplência de um novo cliente com base em múltiplos fatores, fornecendo uma pontuação de risco.</p>
+        </div>
+      </div>
+
+      <div class="step-box">
+        <div class="step-number">4</div>
+        <div>
+          <strong>Melhoria contínua</strong>
+          <p>O modelo se aperfeiçoa e se adapta com a entrada de novos dados de clientes e suas performances reais, tornando-se cada vez mais preciso ao longo do tempo.</p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div>Pedro Schuves Marodin & Enzo Holtzmann Gaio</div>
+      <div>Slide: Poder do ML</div>
+    </footer>
+  </div>
+
+<script src="../js/navigation.js"></script>
+</body>
+</html>

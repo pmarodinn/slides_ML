@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Casos de Sucesso e Aplicações Reais</title>
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Ícones -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+
+    <style>
+      :root {
+        --deep-blue: #0a192f;
+        --navy-blue: #172a45;
+        --light-navy: #303f60;
+        --lightest-navy: #465881;
+        --slate: #8892b0;
+        --light-slate: #a8b2d1;
+        --lightest-slate: #ccd6f6;
+        --white: #e6f1ff;
+        --accent: #64ffda;
+        --accent-hover: #4fd1c5;
+        --green: #2ecc71;
+        --blue: #3498db;
+        --yellow: #f1c40f;
+        --purple: #9b59b6;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background: linear-gradient(135deg, var(--deep-blue), var(--navy-blue));
+        color: var(--white);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+
+      .slide-container {
+        background: rgba(23, 42, 69, 0.85);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        padding: 3rem;
+        max-width: 1200px;
+        width: 100%;
+        border: 1px solid rgba(100, 255, 218, 0.1);
+        animation: fadeIn 0.8s ease-out;
+      }
+
+      .slide-title-common {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: var(--white);
+        text-align: center;
+        margin-bottom: 2.5rem;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .slide-title-common::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 2px;
+      }
+
+      .slide-content-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      @media (min-width: 992px) {
+        .slide-content-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .case-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .case-study {
+        background: rgba(48, 63, 96, 0.7);
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 1px solid rgba(100, 255, 218, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .case-study:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        border-color: rgba(100, 255, 218, 0.2);
+      }
+
+      .case-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--white);
+        margin-bottom: 0.8rem;
+      }
+
+      .result-tag {
+        background: var(--green);
+        color: var(--deep-blue);
+        padding: 0.3rem 0.7rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .case-description {
+        color: var(--light-slate);
+        line-height: 1.6;
+        margin-bottom: 0.5rem;
+      }
+
+      .case-source a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .case-source a:hover {
+        color: var(--accent-hover);
+      }
+
+      .metrics-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .chart-container {
+        width: 100%;
+        height: 300px;
+        background: rgba(23, 42, 69, 0.7);
+        border-radius: 12px;
+        padding: 1rem;
+        border: 1px solid rgba(100, 255, 218, 0.1);
+      }
+
+      .metrics-summary-card {
+        background: rgba(48, 63, 96, 0.7);
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 1px solid rgba(100, 255, 218, 0.1);
+      }
+
+      .metrics-summary-title {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--lightest-slate);
+      }
+
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+      }
+
+      .metric-item {
+        background: rgba(23, 42, 69, 0.6);
+        border-radius: 8px;
+        padding: 1rem;
+        text-align: center;
+        border: 1px solid rgba(100, 255, 218, 0.05);
+      }
+
+      .metric-item i {
+        color: var(--accent);
+        font-size: 1.5rem;
+      }
+
+      .metric-item p {
+        margin: 0.3rem 0;
+        color: var(--light-slate);
+      }
+
+      .metric-item .value {
+        font-weight: 600;
+        color: var(--white);
+      }
+
+      .footer {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(100, 255, 218, 0.1);
+        display: flex;
+        justify-content: space-between;
+        color: var(--light-slate);
+        font-size: 0.9rem;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .slide-container {
+          padding: 2rem 1.5rem;
+        }
+
+        .footer {
+          flex-direction: column;
+          gap: 0.5rem;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <h1 class="slide-title-common">Casos de Sucesso e Aplicações Reais</h1>
+
+      <div class="slide-content-grid">
+        <div class="case-list">
+          <!-- Casos -->
+          <div class="case-study">
+            <div class="case-title">
+              <span>Payoneer</span>
+              <span class="result-tag">Redução de 65% na fraude</span>
+            </div>
+            <p class="case-description">
+              Implementou um sistema de ML para análise de risco de crédito, reduzindo significativamente as taxas de fraude e inadimplência em suas operações globais.
+            </p>
+            <p class="case-source">
+              Fonte:
+              <a href="https://www.payoneer.com/resources/fraud-prevention-machine-learning/" target="_blank">payoneer.com/resources</a>
+            </p>
+          </div>
+          <div class="case-study">
+            <div class="case-title">
+              <span>BlackRock (Aladdin)</span>
+              <span class="result-tag">Acurácia de 92%</span>
+            </div>
+            <p class="case-description">
+              Utiliza algoritmos de ML para avaliar riscos de crédito e mercado, permitindo decisões de investimento mais precisas e gerenciamento de portfólio otimizado.
+            </p>
+            <p class="case-source">
+              Fonte:
+              <a href="https://www.blackrock.com/aladdin/offerings/aladdin-risk" target="_blank">blackrock.com/aladdin</a>
+            </p>
+          </div>
+          <div class="case-study">
+            <div class="case-title">
+              <span>Citi (Feedzai)</span>
+              <span class="result-tag">ROI de 300%</span>
+            </div>
+            <p class="case-description">
+              Parceria com a Feedzai para implementar ML na detecção de fraudes e análise de crédito, resultando em economia significativa e melhoria na experiência do cliente.
+            </p>
+            <p class="case-source">
+              Fonte:
+              <a href="https://feedzai.com/resources/case-studies/" target="_blank">feedzai.com/resources</a>
+            </p>
+          </div>
+          <div class="case-study">
+            <div class="case-title">
+              <span>Estudo de Caso: Banco Brasileiro</span>
+              <span class="result-tag">Redução de 40% na inadimplência</span>
+            </div>
+            <p class="case-description">
+              Implementação de modelo de ML para análise de crédito consignado, resultando em aumento de 25% na aprovação de bons pagadores e acurácia de 98%.
+            </p>
+            <p class="case-source">
+              Fonte:
+              <a href="https://www.bcb.gov.br/estabilidadefinanceira/publicacoes" target="_blank">Banco Central do Brasil</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="metrics-section">
+          <div class="chart-container">
+            <canvas id="successMetricsChart"></canvas>
+          </div>
+
+          <div class="metrics-summary-card">
+            <p class="metrics-summary-title">Principais Métricas de Sucesso da IA</p>
+            <div class="metrics-grid">
+              <div class="metric-item">
+                <i class="fas fa-chart-line"></i>
+                <p>Redução de Inadimplência</p>
+                <p class="value">30-60%</p>
+              </div>
+              <div class="metric-item">
+                <i class="fas fa-tachometer-alt"></i>
+                <p>Aumento de Eficiência</p>
+                <p class="value">70-90%</p>
+              </div>
+              <div class="metric-item">
+                <i class="fas fa-coins"></i>
+                <p>ROI Médio</p>
+                <p class="value">200-400%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div>Pedro Schuves Marodin & Enzo Holtzmann Gaio</div>
+        <div>Slide: Casos de Sucesso</div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const rootStyles = getComputedStyle(document.documentElement);
+        const accent = rootStyles.getPropertyValue('--accent').trim();
+        const lightSlate = rootStyles.getPropertyValue('--light-slate').trim();
+        const white = rootStyles.getPropertyValue('--white').trim();
+
+        const ctx = document.getElementById('successMetricsChart');
+        if (ctx) {
+          new Chart(ctx.getContext('2d'), {
+            type: 'bar',
+            data: {
+              labels: ['Bancos', 'Fintechs', 'Crédito Consignado', 'Cartões de Crédito'],
+              datasets: [
+                {
+                  label: 'Redução na Inadimplência (%)',
+                  data: [35, 55, 40, 30],
+                  backgroundColor: accent,
+                  borderColor: accent,
+                  borderWidth: 1,
+                },
+                {
+                  label: 'Aumento na Aprovação (%)',
+                  data: [25, 30, 20, 15],
+                  backgroundColor: lightSlate,
+                  borderColor: lightSlate,
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                title: {
+                  display: true,
+                  text: 'Impacto do ML por Setor Financeiro',
+                  font: {
+                    size: 16,
+                    weight: 'bold',
+                  },
+                  color: white,
+                },
+                legend: {
+                  labels: {
+                    color: white,
+                  },
+                },
+              },
+              scales: {
+                x: {
+                  ticks: { color: white },
+                  grid: { color: 'rgba(168, 178, 209, 0.1)' },
+                },
+                y: {
+                  beginAtZero: true,
+                  ticks: {
+                    callback: (value) => value + '%',
+                    color: white,
+                  },
+                  grid: { color: 'rgba(168, 178, 209, 0.1)' },
+                  title: {
+                    display: true,
+                    text: 'Percentual (%)',
+                    color: white,
+                  },
+                },
+              },
+            },
+          });
+        }
+      });
+    </script>
+
+    <script src="../js/navigation.js"></script>
+  </body>
+</html>
